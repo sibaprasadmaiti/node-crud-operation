@@ -1,0 +1,13 @@
+
+====================================
+Install Required
+====================================
+npm init
+npm install express
+npm install mongoose
+npm install express-handlebars
+or
+npm install hbs
+npm install body-parser
+npm install multer
+npm install nodemon -g

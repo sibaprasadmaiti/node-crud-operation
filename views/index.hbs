@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Nodejs Express CRUD
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    </head>
+    {{!-- <body class="bg-info"> --}}
+    <body>
+        <div class="container">
+              <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" style="background-color:#fff;margin-top: 25px;padding: 20px;border: 1px solid #ccc;border-radius: 10px">
+                <h3>{{viewTitle}} 
+                    {{#if user}}
+                    <a class="btn btn-info btn-sm" style="float: right;margin: 3px;" href="/users/excel-download"><i class="fa fa-download"></i> Download xlsx</a>
+                   {{/if}}
+                   <a class="btn btn-success btn-sm" style="float: right;margin: 3px;" href="/add"><i class="fa fa-plus"></i> Create New</a>  
+                </h3>
+               <table class="table table-striped">
+                   <thead>
+                       <tr>
+                           <th>Name</th>
+                           <th>Email</th>
+                           <th>Mobile</th>
+                           <th>Action</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       {{#if user}}
+                     
+                       {{#each user}}
+                       <tr>
+                           <td>{{ this.name }}</td>
+                           <td>{{ this.email }}</td>
+                           <td>{{ this.mobile }}</td>
+                           <td>
+                               <a href="/{{ this._id }}" title="Edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                               <a href="/delete/{{ this._id }}" title="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this record ?')"><i class="fa fa-trash-o"></i> Delete</a>
+                           </td>
+                       </tr>
+                       {{/each}}
+                       {{else}}
+                       <tr>
+                           <td colspan="5" style="text-align: center;">Records not available.</td>
+                       </tr>
+                       {{/if}}
+                   </tbody>
+               </table>
+            </div>
+             <div class="col-md-2"></div>
+        </div>
+        </div>
+    </body>
+    </html>
